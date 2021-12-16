@@ -1,0 +1,22 @@
+server:
+  port: 8081
+spring:
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://haolu.cir2riiyabb0.us-east-2.rds.amazonaws.com:3306/objectoriented
+    username: root
+    password: 12345678
+
+#  security:
+#    user:
+#     name: user
+#     password: 12345678
+
+csun:
+  jwt:
+    header: Authorization
+    expire: 3600
+    secret: i41234eofsmaliyij1223luhao880527
+
+
+
