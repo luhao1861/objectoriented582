@@ -1,5 +1,7 @@
 package com.csun.objectoriented582.library.service.impl;
 
+import com.csun.objectoriented582.library.dto.OptionDto;
+import com.csun.objectoriented582.library.dto.TreeDto;
 import com.csun.objectoriented582.library.entity.Bookshelf;
 import com.csun.objectoriented582.library.entity.Room;
 import com.csun.objectoriented582.library.repository.BookshelfRepository;
@@ -73,5 +75,31 @@ public class BookshelfServiceImpl implements BookshelfService {
     @Override
     public List<Bookshelf> findAllByRoom(Room room) {
         return bookshelfRepository.findAllByRoom(room);
+    }
+
+    @Override
+    public List<OptionDto> getOptions() {
+        List<OptionDto> list = new ArrayList<>();
+        List<Bookshelf> roomList = bookshelfRepository.findAll();
+        for (Bookshelf bookshelf : roomList) {
+            OptionDto dto = new OptionDto();
+            dto.setValue(bookshelf.getId());
+            dto.setLabel("Bookshelf Code_" + bookshelf.getBookshelfCode());
+            list.add(dto);
+        }
+        return list;
+    }
+
+    @Override
+    public List<TreeDto> buildTree() {
+        List<TreeDto> list = new ArrayList<>();
+        List<Bookshelf> bookshelfList = bookshelfRepository.findAll();
+        for (Bookshelf bookshelf : bookshelfList) {
+            TreeDto dto = new TreeDto();
+            dto.setId(bookshelf.getId());
+            dto.setLabel("Bookshelf Code _ " + bookshelf.getBookshelfCode());
+            list.add(dto);
+        }
+        return list;
     }
 }

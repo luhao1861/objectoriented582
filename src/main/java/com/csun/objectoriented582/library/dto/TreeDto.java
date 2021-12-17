@@ -3,7 +3,7 @@ package com.csun.objectoriented582.library.dto;
 import lombok.Data;
 
 @Data
-public class RoomTreeDto {
+public class TreeDto {
 
     private Long id;
 

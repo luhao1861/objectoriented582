@@ -1,7 +1,8 @@
 package com.csun.objectoriented582.library.controller;
 
 import com.csun.objectoriented582.common.Result;
-import com.csun.objectoriented582.library.dto.RoomTreeDto;
+import com.csun.objectoriented582.library.dto.OptionDto;
+import com.csun.objectoriented582.library.dto.TreeDto;
 import com.csun.objectoriented582.library.entity.Bookshelf;
 import com.csun.objectoriented582.library.entity.Room;
 import com.csun.objectoriented582.library.service.BookshelfService;
@@ -13,9 +14,7 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Set;
 
 /**
  * @author Hao Lu
@@ -68,5 +67,17 @@ public class BookshelfController extends BaseController {
     public Result delete(@RequestBody Long[] ids) {
         bookshelfService.deleteByIds(ids);
         return Result.success("delete success");
+    }
+
+    @GetMapping("/options")
+    public Result options() {
+        List<OptionDto> bookshelfServiceOptions = bookshelfService.getOptions();
+        return Result.success(bookshelfServiceOptions);
+    }
+
+    @GetMapping("/tree")
+    public Result tree() {
+        List<TreeDto> treeDtos = bookshelfService.buildTree();
+        return Result.success(treeDtos);
     }
 }

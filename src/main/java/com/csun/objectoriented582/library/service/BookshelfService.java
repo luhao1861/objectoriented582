@@ -1,5 +1,7 @@
 package com.csun.objectoriented582.library.service;
 
+import com.csun.objectoriented582.library.dto.OptionDto;
+import com.csun.objectoriented582.library.dto.TreeDto;
 import com.csun.objectoriented582.library.entity.Bookshelf;
 import com.csun.objectoriented582.library.entity.Room;
 import org.springframework.data.domain.Page;
@@ -21,4 +23,8 @@ public interface BookshelfService {
     void deleteByIds(Long[] ids);
 
     List<Bookshelf> findAllByRoom(Room room);
+
+    List<OptionDto> getOptions();
+
+    List<TreeDto> buildTree();
 }

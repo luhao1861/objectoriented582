@@ -90,7 +90,7 @@ public class UserServiceImpl implements UserService {
                 return criteriaBuilder.and(predicates.toArray(new Predicate[0]));
             }
         };
-        Pageable pageableJPA = PageRequest.of(pageable.getPageNumber() - 1, pageable.getPageSize());
+        Pageable pageableJPA = PageRequest.of(pageable.getPageNumber(), pageable.getPageSize());
         return userRepository.findAll(specification, pageableJPA);
     }
 

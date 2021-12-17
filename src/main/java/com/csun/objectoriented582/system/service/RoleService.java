@@ -21,4 +21,6 @@ public interface RoleService {
     void save(Role role);
 
     void removeByIds(List<Long> asList);
+
+    Set<Role> findAll();
 }

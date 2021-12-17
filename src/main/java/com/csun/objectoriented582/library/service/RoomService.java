@@ -1,7 +1,7 @@
 package com.csun.objectoriented582.library.service;
 
 import com.csun.objectoriented582.library.dto.OptionDto;
-import com.csun.objectoriented582.library.dto.RoomTreeDto;
+import com.csun.objectoriented582.library.dto.TreeDto;
 import com.csun.objectoriented582.library.entity.Room;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -21,7 +21,7 @@ public interface RoomService {
 
     void deleteByIds(Long[] ids);
 
-    List<RoomTreeDto> buildTree();
+    List<TreeDto> buildTree();
 
     List<OptionDto> getOptions();
 }

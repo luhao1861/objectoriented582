@@ -1,14 +1,11 @@
 package com.csun.objectoriented582.library.controller;
 
-import cn.hutool.core.map.MapUtil;
 import com.csun.objectoriented582.common.Result;
 import com.csun.objectoriented582.library.dto.OptionDto;
-import com.csun.objectoriented582.library.dto.RoomTreeDto;
+import com.csun.objectoriented582.library.dto.TreeDto;
 import com.csun.objectoriented582.library.entity.Room;
-import com.csun.objectoriented582.library.service.BookService;
 import com.csun.objectoriented582.library.service.RoomService;
 import com.csun.objectoriented582.system.controller.BaseController;
-import com.csun.objectoriented582.system.entity.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
@@ -57,7 +54,7 @@ public class RoomController extends BaseController {
 
     @GetMapping("/tree")
     public Result tree() {
-        List<RoomTreeDto> rooms = roomService.buildTree();
+        List<TreeDto> rooms = roomService.buildTree();
         return Result.success(rooms);
     }
 

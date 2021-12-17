@@ -1,5 +1,6 @@
 package com.csun.objectoriented582.system.controller;
 
+import cn.hutool.core.map.MapUtil;
 import com.csun.objectoriented582.common.CodeMsg;
 import com.csun.objectoriented582.common.Constant;
 import com.csun.objectoriented582.common.Result;
@@ -20,10 +21,11 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 /**
  * <p>
- *  前端控制器
+ * 前端控制器
  * </p>
  *
  * @author 我的公众号：MarkerHub
@@ -125,6 +127,21 @@ public class UserController extends BaseController {
         user.setUpdated(LocalDateTime.now());
         userService.save(user);
         return Result.success("");
+    }
+
+    @PostMapping("/signup")
+    public Result signUp(@RequestParam(name = "username") String username, @RequestParam(name = "password") String password, @RequestParam(name = "email") String email) {
+        User user = new User();
+        user.setUsername(username);
+        user.setPassword(passwordEncoder.encode(password));
+        user.setEmail(email);
+        user.setRoles(roleService.findAll());
+        user.setStatus(Constant.STATUS_ON);
+        user.setAvatar(Constant.DEFULT_AVATAR);
+        user.setCreated(LocalDateTime.now());
+        userService.save(user);
+        Map map = MapUtil.builder().put("username",username).put("password",password).map();
+        return Result.success(map);
     }
 }
 

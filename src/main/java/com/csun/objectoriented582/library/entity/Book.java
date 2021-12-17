@@ -43,6 +43,8 @@ public class Book  implements Serializable {
     @Column(name = "updated")
     private LocalDateTime updated;
 
-    @Column(name = "bookshelf_id" )
-    private Long bookshelfId;
+	@ManyToOne
+	@JoinColumn(name="bookshelf_id")
+    private Bookshelf bookshelf;
+
 }

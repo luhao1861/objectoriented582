@@ -1,7 +1,7 @@
 package com.csun.objectoriented582.library.service.impl;
 
 import com.csun.objectoriented582.library.dto.OptionDto;
-import com.csun.objectoriented582.library.dto.RoomTreeDto;
+import com.csun.objectoriented582.library.dto.TreeDto;
 import com.csun.objectoriented582.library.entity.Room;
 import com.csun.objectoriented582.library.repository.RoomRepository;
 import com.csun.objectoriented582.library.service.RoomService;
@@ -18,7 +18,6 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
-import javax.swing.text.html.Option;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -72,11 +71,11 @@ public class RoomServiceImpl implements RoomService {
     }
 
     @Override
-    public List<RoomTreeDto> buildTree() {
-        List<RoomTreeDto> list = new ArrayList<>();
+    public List<TreeDto> buildTree() {
+        List<TreeDto> list = new ArrayList<>();
         List<Room> roomList = roomRepository.findAll();
         for (Room room : roomList) {
-            RoomTreeDto dto = new RoomTreeDto();
+            TreeDto dto = new TreeDto();
             dto.setId(room.getId());
             dto.setLabel("Room Number_" + room.getRoomNumber());
             list.add(dto);

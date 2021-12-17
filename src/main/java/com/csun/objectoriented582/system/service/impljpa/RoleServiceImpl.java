@@ -63,7 +63,7 @@ public class RoleServiceImpl implements RoleService {
                 return criteriaBuilder.and(predicates.toArray(new Predicate[0]));
             }
         };
-        Pageable pageableJPA = PageRequest.of(pageable.getPageNumber() - 1, pageable.getPageSize());
+        Pageable pageableJPA = PageRequest.of(pageable.getPageNumber() , pageable.getPageSize());
         return roleRepository.findAll(specification, pageableJPA);
     }
 
@@ -75,5 +75,12 @@ public class RoleServiceImpl implements RoleService {
     @Override
     public void removeByIds(List<Long> asList) {
         roleRepository.deleteAllByIdInBatch(asList);
+    }
+
+    @Override
+    public Set<Role> findAll() {
+        List<Role> list = roleRepository.findAll();
+        Set<Role> set = new HashSet<>(list);
+        return set;
     }
 }
